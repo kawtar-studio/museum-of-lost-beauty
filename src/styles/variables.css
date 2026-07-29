@@ -1,0 +1,26 @@
+:root {
+    --color-background: #f7f7f4;
+    --color-surface: #ffffff;
+    --color-text: #111111;
+    --color-muted: #6a6a6a;
+    --color-border: #d8d8d8;
+    --color-hover: #ededed;
+    --color-black: #000000;
+
+    --font-display: "Cormorant Garamond", serif;
+    --font-body: "Inter", sans-serif;
+
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 40px;
+    --space-xl: 64px;
+    --space-2xl: 96px;
+    --space-3xl: 160px;
+
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.4s ease;
+    --transition-slow: 0.8s ease;
+
+    --container-width: 1400px;
+}
