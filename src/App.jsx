@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MuseumLayout from "./layouts/MuseumLayout";
 
 import Home from "./pages/Home/Home";
+import Threshold from "./pages/Threshold/Threshold";
 import LostEra from "./pages/LostEra/LostEra";
 import ArtOfCraft from "./pages/ArtOfCraft/ArtOfCraft";
 import FashionIdentity from "./pages/FashionIdentity/FashionIdentity";
@@ -14,9 +15,13 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+
         <Route path="/" element={<Home />} />
 
         <Route element={<MuseumLayout />}>
+
+          <Route path="/threshold" element={<Threshold />} />
+
           <Route path="/lost-era" element={<LostEra />} />
           <Route path="/art-of-craft" element={<ArtOfCraft />} />
           <Route path="/fashion-as-identity" element={<FashionIdentity />} />
@@ -24,7 +29,9 @@ function App() {
           <Route path="/archive" element={<Archive />} />
           <Route path="/curator" element={<Curator />} />
           <Route path="/closing" element={<Closing />} />
+
         </Route>
+
       </Routes>
     </BrowserRouter>
   );

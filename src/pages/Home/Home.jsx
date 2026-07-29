@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ophelia from "../../assets/images/The Death of Sardanapalus.jpeg";
+import sardanapalus from "../../assets/images/The Death of Sardanapalus.jpeg";
 import "./Home.css";
 
 function Home() {
@@ -7,15 +7,14 @@ function Home() {
         <main className="museum-page">
 
             <img
-                src={ophelia}
-                alt="Ophelia by John Everett Millais"
+                src={sardanapalus}
+                alt="The Death of Sardanapalus"
                 className="background-art"
             />
 
             <div className="image-overlay"></div>
 
             <div className="texture-layer"></div>
-
 
             <section className="page-content">
 
@@ -25,12 +24,11 @@ function Home() {
                     of Lost Beauty
                 </h1>
 
-
                 <p className="intro-text">
-                    A study of beauty beyond its era, where forgotten forms, fading memories, and lost expressions of art find new life in the digital age.</p>
+                    A study of beauty beyond its era, where forgotten forms, fading memories, and lost expressions of art find new life in the digital age.
+                </p>
 
             </section>
-
 
             <footer className="page-footer">
 
@@ -38,8 +36,7 @@ function Home() {
                     PAGE 01
                 </span>
 
-
-                <Link to="/journey" className="enter-link">
+                <Link to="/threshold" className="enter-link">
                     ENTER →
                 </Link>
 

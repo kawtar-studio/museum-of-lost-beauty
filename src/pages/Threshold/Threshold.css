@@ -1,0 +1,628 @@
+.threshold-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #090807;
+    color: #f4ecdf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7rem 9%;
+}
+
+.threshold-background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    transform: scale(1.12);
+    filter: brightness(.3) contrast(1.12) saturate(.9);
+    animation: backgroundReveal 5.5s ease forwards;
+}
+
+.threshold-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to bottom,
+            rgba(8, 8, 8, .82),
+            rgba(10, 10, 10, .38) 28%,
+            rgba(10, 10, 10, .28) 50%,
+            rgba(10, 10, 10, .6) 78%,
+            rgba(8, 8, 8, .88)),
+        radial-gradient(circle at center,
+            rgba(0, 0, 0, .05),
+            rgba(0, 0, 0, .55));
+    backdrop-filter: blur(2px);
+}
+
+.threshold-content {
+    position: relative;
+    z-index: 5;
+    width: min(980px, 100%);
+}
+
+.threshold-label {
+    display: inline-block;
+    font-family: "Inter", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .45rem;
+    font-size: .72rem;
+    color: rgba(236, 222, 197, .72);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeSlide 1.3s ease forwards;
+    animation-delay: .4s;
+}
+
+.threshold-content h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(3rem, 5vw, 5.3rem);
+    line-height: .96;
+    font-weight: 300;
+    color: #fbf6ef;
+    max-width: 760px;
+    margin-bottom: 5rem;
+    text-wrap: balance;
+    text-shadow: 0 12px 30px rgba(0, 0, 0, .45);
+    opacity: 0;
+    animation: fadeSlide 1.5s ease forwards;
+    animation-delay: .8s;
+}
+
+.rooms {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+    width: 100%;
+}
+
+.room {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    align-items: start;
+    column-gap: 2rem;
+    padding: 1.35rem 0;
+    text-decoration: none;
+    color: inherit;
+    border-top: 1px solid rgba(255, 255, 255, .08);
+    position: relative;
+    transition: .55s ease;
+    opacity: 0;
+    transform: translateX(-40px);
+}
+
+.room:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.room-number {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.6rem;
+    color: rgba(212, 183, 132, .75);
+    font-weight: 500;
+    transition: .45s ease;
+}
+
+.room-text h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 300;
+    font-size: clamp(1.8rem, 2.2vw, 2.6rem);
+    color: #f7f1e6;
+    margin-bottom: .45rem;
+    letter-spacing: .02em;
+    transition: .45s ease;
+}
+
+.room-text p {
+    font-family: "Inter", sans-serif;
+    font-size: .95rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: rgba(230, 221, 207, .58);
+    max-width: 520px;
+    transition: .45s ease;
+}
+
+.room::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: left;
+    width: 34px;
+    height: 1px;
+    background: #d7b57a;
+    transition: .45s ease;
+}
+
+.rooms:hover .room {
+    opacity: .3;
+}
+
+.rooms:hover .room:hover {
+    opacity: 1;
+    transform: translateX(20px);
+}
+
+.room:hover::before {
+    transform: translateY(-50%) scaleX(1);
+}
+
+.room:hover .room-number {
+    color: #ecd9b2;
+}
+
+.room:hover .room-text h2 {
+    color: #fffaf3;
+    letter-spacing: .06em;
+}
+
+.room:hover .room-text p {
+    color: rgba(247, 240, 228, .92);
+}
+
+.journey-note {
+    position: absolute;
+    bottom: 3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Inter", sans-serif;
+    font-size: .78rem;
+    letter-spacing: .28rem;
+    text-transform: uppercase;
+    color: rgba(222, 210, 190, .38);
+    z-index: 5;
+    text-align: center;
+    opacity: 0;
+    animation: fadeSlide 1.4s ease forwards;
+    animation-delay: 2.7s;
+}
+
+@media (max-width:1024px) {
+
+    .threshold-page {
+        padding: 6rem 7%;
+    }
+
+    .threshold-content h1 {
+        margin-bottom: 4rem;
+    }
+
+}
+
+@media (max-width:768px) {
+
+    .threshold-page {
+        padding: 5rem 2rem;
+        align-items: flex-start;
+    }
+
+    .threshold-background {
+        transform: scale(1.2);
+    }
+
+    .threshold-content {
+        margin-top: 2rem;
+    }
+
+    .threshold-content h1 {
+        font-size: 2.7rem;
+        margin-bottom: 3rem;
+    }
+
+    .room {
+        grid-template-columns: 52px 1fr;
+        column-gap: 1rem;
+        padding: 1.1rem 0;
+    }
+
+    .room-number {
+        font-size: 1.2rem;
+    }
+
+    .room-text h2 {
+        font-size: 1.6rem;
+    }
+
+    .room-text p {
+        font-size: .85rem;
+        line-height: 1.7;
+    }
+
+    .journey-note {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        transform: none;
+        display: block;
+        margin-top: 3rem;
+        letter-spacing: .18rem;
+        font-size: .7rem;
+    }
+
+}
+
+@media (max-width:480px) {
+
+    .threshold-page {
+        padding: 4rem 1.4rem;
+    }
+
+    .threshold-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .threshold-label {
+        letter-spacing: .32rem;
+    }
+
+    .room {
+        grid-template-columns: 42px 1fr;
+    }
+
+    .room-text h2 {
+        font-size: 1.35rem;
+    }
+
+    .room-text p {
+        display: none;
+    }
+
+}
+
+.room:nth-child(1) {
+    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
+    animation-delay: 1.15s;
+}
+
+.room:nth-child(2) {
+    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
+    animation-delay: 1.3s;
+}
+
+.room:nth-child(3) {
+    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
+    animation-delay: 1.45s;
+}
+
+.room:nth-child(4) {
+    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
+    animation-delay: 1.6s;
+}
+
+.room:nth-child(5) {
+    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
+    animation-delay: 1.75s;
+}
+
+.room:nth-child(6) {
+    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
+    animation-delay: 1.9s;
+}
+
+.room:nth-child(7) {
+    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
+    animation-delay: 2.05s;
+}
+
+.room:nth-child(8) {
+    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
+    animation-delay: 2.2s;
+}
+
+.room::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+            rgba(218, 183, 120, .08),
+            transparent 18%,
+            transparent 82%,
+            rgba(218, 183, 120, .04));
+    opacity: 0;
+    transition: opacity .6s ease;
+    pointer-events: none;
+}
+
+.room:hover::after {
+    opacity: 1;
+}
+
+.room:hover {
+    padding-left: 1.6rem;
+}
+
+.room:hover .room-number {
+    transform: translateX(.35rem);
+}
+
+.room:hover .room-text h2 {
+    transform: translateX(.45rem);
+}
+
+.room:hover .room-text p {
+    transform: translateX(.45rem);
+}
+
+.room:hover {
+    border-top-color: rgba(230, 203, 155, .28);
+}
+
+.room:last-child:hover {
+    border-bottom-color: rgba(230, 203, 155, .28);
+}
+
+.threshold-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 50% 35%,
+            rgba(255, 248, 235, .05),
+            transparent 55%);
+    opacity: .9;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.threshold-page::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to right,
+            rgba(0, 0, 0, .45),
+            transparent 20%,
+            transparent 80%,
+            rgba(0, 0, 0, .45));
+    pointer-events: none;
+    z-index: 2;
+}
+
+.threshold-content {
+    animation: pageFloat 2.8s ease-out forwards;
+}
+
+.threshold-background {
+    will-change: transform, filter;
+}
+
+.threshold-page:hover .threshold-background {
+    transform: scale(1.16);
+    filter:
+        brightness(.34) contrast(1.15) saturate(.95);
+    transition:
+        transform 8s ease,
+        filter 8s ease;
+}
+
+.threshold-content h1::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 1px;
+    margin-top: 2rem;
+    background: rgba(219, 186, 135, .55);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: lineReveal 1.2s ease forwards;
+    animation-delay: 1.3s;
+}
+
+.threshold-label {
+    position: relative;
+    padding-left: 1.4rem;
+}
+
+.threshold-label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: .8rem;
+    height: 1px;
+    background: #cda86b;
+    transform: translateY(-50%) scaleX(0);
+    transform-origin: left;
+    animation: lineReveal .9s ease forwards;
+    animation-delay: .5s;
+}
+
+.rooms {
+    position: relative;
+}
+
+.rooms::before {
+    content: "";
+    position: absolute;
+    left: 38px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, .06),
+            rgba(255, 255, 255, .02));
+}
+
+.room-text {
+    transition: .5s ease;
+}
+
+.rooms:hover .room-text {
+    filter: blur(.4px);
+}
+
+.rooms:hover .room:hover .room-text {
+    filter: none;
+}
+
+.rooms:hover .room-number {
+    opacity: .45;
+}
+
+.rooms:hover .room:hover .room-number {
+    opacity: 1;
+}
+
+.room:active {
+    transform: translateX(24px) scale(.995);
+}
+
+@keyframes roomReveal {
+
+    from {
+
+        opacity: 0;
+        transform:
+            translateX(-50px);
+
+        filter:
+            blur(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+        transform:
+            translateX(0);
+
+        filter:
+            blur(0);
+
+    }
+
+}
+
+@keyframes fadeSlide {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(28px);
+
+        filter:
+            blur(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        filter:
+            blur(0);
+
+    }
+
+}
+
+@keyframes backgroundReveal {
+
+    from {
+
+        transform:
+            scale(1.25);
+
+        filter:
+            brightness(.12) contrast(1.35) blur(8px);
+
+    }
+
+    to {
+
+        transform:
+            scale(1.12);
+
+        filter:
+            brightness(.3) contrast(1.12) saturate(.9) blur(0);
+
+    }
+
+}
+
+@keyframes pageFloat {
+
+    from {
+
+        transform:
+            translateY(18px);
+
+    }
+
+    to {
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+@keyframes lineReveal {
+
+    from {
+
+        transform:
+            scaleX(0);
+
+    }
+
+    to {
+
+        transform:
+            scaleX(1);
+
+    }
+
+}
+
+@media (max-width:768px) {
+
+    .rooms::before {
+        left: 24px;
+    }
+
+    .room:hover {
+        padding-left: .6rem;
+        transform: none;
+    }
+
+    .room:hover .room-text h2,
+    .room:hover .room-text p,
+    .room:hover .room-number {
+        transform: none;
+    }
+
+    .rooms:hover .room {
+        opacity: 1;
+    }
+
+    .rooms:hover .room-text {
+        filter: none;
+    }
+
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation: none !important;
+        transition: none !important;
+
+    }
+
+}
