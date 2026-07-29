@@ -1,26 +1,53 @@
 :root {
-    --color-background: #f7f7f4;
-    --color-surface: #ffffff;
-    --color-text: #111111;
-    --color-muted: #6a6a6a;
-    --color-border: #d8d8d8;
-    --color-hover: #ededed;
-    --color-black: #000000;
+    --color-background: #f7f3eb;
+    --color-surface: #fdfaf4;
+    --color-paper: #f3ede2;
+
+    --color-text: #201d1a;
+    --color-text-soft: #6f685f;
+    --color-text-light: #958d82;
+
+    --color-border: rgba(32, 29, 26, 0.12);
+
+    --color-accent: #8f7355;
+    --color-accent-hover: #735a40;
 
     --font-display: "Cormorant Garamond", serif;
     --font-body: "Inter", sans-serif;
 
-    --space-xs: 8px;
-    --space-sm: 16px;
-    --space-md: 24px;
-    --space-lg: 40px;
-    --space-xl: 64px;
-    --space-2xl: 96px;
-    --space-3xl: 160px;
+    --fs-hero: clamp(4rem, 8vw, 8rem);
+    --fs-display: clamp(2.75rem, 5vw, 4.5rem);
+    --fs-h1: 3rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.5rem;
+    --fs-body: 1rem;
+    --fs-small: 0.9rem;
+    --fs-caption: 0.75rem;
 
-    --transition-fast: 0.2s ease;
-    --transition-medium: 0.4s ease;
-    --transition-slow: 0.8s ease;
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+    --space-6: 4rem;
+    --space-7: 6rem;
+    --space-8: 8rem;
 
-    --container-width: 1400px;
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 24px;
+
+    --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.06);
+
+    --transition-fast: 180ms ease;
+    --transition-medium: 350ms ease;
+    --transition-slow: 700ms ease;
+
+    --container-width: 1280px;
+    --container-padding: 2rem;
+
+    --z-base: 1;
+    --z-nav: 100;
+    --z-overlay: 500;
+    --z-modal: 1000;
 }

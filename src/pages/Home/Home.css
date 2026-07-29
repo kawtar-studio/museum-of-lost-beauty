@@ -1,0 +1,492 @@
+.museum-page {
+
+    min-height: 100vh;
+    width: 100%;
+
+    position: relative;
+    overflow: hidden;
+
+    background: #120b08;
+
+    color: #f5ead7;
+
+    padding: 55px;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+
+.background-art {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: 0;
+
+    transform: scale(1.2);
+
+    filter:
+        saturate(1.35) contrast(1.12) brightness(0.9);
+
+    z-index: 0;
+
+    object-position: center 45%;
+
+    animation: paintingReveal 4s ease forwards;
+
+}
+
+
+
+.image-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(255, 180, 80, 0.16),
+            transparent 45%),
+        linear-gradient(180deg,
+            rgba(15, 8, 5, 0.25),
+            rgba(12, 7, 5, 0.55));
+
+    z-index: 1;
+
+}
+
+
+
+.texture-layer {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+
+    opacity: 0.12;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    animation: textureMove 30s linear infinite;
+
+}
+
+
+
+.page-content {
+
+    position: relative;
+
+    z-index: 3;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+}
+
+
+
+h1 {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(75px, 9vw, 130px);
+
+    font-weight: 300;
+
+    line-height: .9;
+
+    letter-spacing: -2px;
+
+    text-transform: uppercase;
+
+    margin: 0;
+
+    color: #f7e8cc;
+
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    text-shadow:
+        0 0 30px rgba(255, 220, 160, 0.25),
+        0 5px 35px rgba(0, 0, 0, 0.8);
+
+    animation: titleReveal 2s ease forwards;
+
+    animation-delay: 1.8s;
+
+}
+
+
+
+.intro-text {
+
+    margin-top: 55px;
+
+    max-width: 900px;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 300;
+
+    line-height: 2.1;
+
+    letter-spacing: 2.8px;
+
+    color: #eadbc2;
+
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    text-shadow:
+        0 3px 25px rgba(0, 0, 0, 0.85);
+
+    animation: textReveal 2s ease forwards;
+
+    animation-delay: 3.3s;
+
+}
+
+
+
+.page-footer {
+
+    position: relative;
+
+    z-index: 3;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-family: "Inter", sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+}
+
+
+
+.page-number {
+
+    color: #e9d3a7;
+
+    opacity: 0;
+
+    transform: translateX(-60px);
+
+    animation: leftReveal 1.5s ease forwards;
+
+    animation-delay: 4.8s;
+
+}
+
+
+
+.enter-link {
+
+    color: #e9d3a7;
+
+    text-decoration: none;
+
+    opacity: 0;
+
+    transform: translateX(60px);
+
+    animation: rightReveal 1.5s ease forwards;
+
+    animation-delay: 4.8s;
+
+    transition: .5s ease;
+
+}
+
+
+
+.enter-link:hover {
+
+    color: #fff1cf;
+
+    letter-spacing: 6px;
+
+}
+
+
+
+@keyframes paintingReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(1.2);
+
+        filter:
+            saturate(1.1) contrast(1) brightness(.65);
+
+    }
+
+    to {
+
+        opacity: .86;
+
+        transform: scale(1.08);
+
+        filter:
+            saturate(1.35) contrast(1.12) brightness(.9);
+
+    }
+
+}
+
+
+
+@keyframes titleReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(35px);
+
+        filter: blur(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+        filter: blur(0);
+
+    }
+
+}
+
+
+
+@keyframes textReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(25px);
+
+        filter: blur(5px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+        filter: blur(0);
+
+    }
+
+}
+
+
+
+@keyframes leftReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateX(-60px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateX(0);
+
+    }
+
+}
+
+
+
+@keyframes rightReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateX(60px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateX(0);
+
+    }
+
+}
+
+
+
+@keyframes textureMove {
+
+    from {
+
+        background-position: 0 0;
+
+    }
+
+    to {
+
+        background-position: 300px 300px;
+
+    }
+
+}
+
+
+
+@media (max-width: 768px) {
+
+    .museum-page {
+
+        padding: 25px;
+
+    }
+
+
+    .background-art {
+
+        object-position: center 45%;
+
+    }
+
+
+    .image-overlay {
+
+        background:
+            radial-gradient(circle at center,
+                rgba(255, 180, 80, 0.12),
+                transparent 50%),
+            linear-gradient(180deg,
+                rgba(15, 8, 5, .3),
+                rgba(12, 7, 5, .65));
+
+    }
+
+
+    h1 {
+
+        font-size: clamp(48px, 14vw, 75px);
+
+        letter-spacing: -1px;
+
+    }
+
+
+    .intro-text {
+
+        margin-top: 35px;
+
+        max-width: 92%;
+
+        font-size: 11px;
+
+        line-height: 2;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .page-footer {
+
+        flex-direction: column;
+
+        gap: 20px;
+
+        font-size: 10px;
+
+        letter-spacing: 3px;
+
+    }
+
+}
+
+
+
+@media (max-width: 480px) {
+
+    .museum-page {
+
+        padding: 20px;
+
+    }
+
+
+    .background-art {
+
+        object-position: 55% 45%;
+
+    }
+
+
+    h1 {
+
+        font-size: 45px;
+
+    }
+
+
+    .intro-text {
+
+        font-size: 10px;
+
+        letter-spacing: 1.5px;
+
+    }
+
+}

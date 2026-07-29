@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
-
 body {
     font-family: var(--font-body);
     color: var(--color-text);
@@ -13,8 +11,41 @@ h5,
 h6 {
     font-family: var(--font-display);
     font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: var(--fs-hero);
+}
+
+h2 {
+    font-size: var(--fs-display);
+}
+
+h3 {
+    font-size: var(--fs-h2);
+}
+
+h4 {
+    font-size: var(--fs-h3);
 }
 
 p {
+    color: var(--color-text-soft);
     line-height: 1.8;
+    max-width: 65ch;
+}
+
+small {
+    font-size: var(--fs-caption);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+blockquote {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.4;
+    font-style: italic;
 }
