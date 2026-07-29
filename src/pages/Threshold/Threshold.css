@@ -1,14 +1,13 @@
 .threshold-page {
     position: relative;
-    width: 100%;
     min-height: 100vh;
     overflow: hidden;
-    background: #090807;
-    color: #f4ecdf;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 7rem 9%;
+    padding: 7rem 8%;
+    background: #080807;
+    color: #f6f1e8;
 }
 
 .threshold-background {
@@ -19,8 +18,8 @@
     object-fit: cover;
     object-position: center center;
     transform: scale(1.12);
-    filter: brightness(.3) contrast(1.12) saturate(.9);
-    animation: backgroundReveal 5.5s ease forwards;
+    filter: brightness(.28) contrast(1.08) saturate(.88);
+    animation: bgReveal 4.5s ease forwards;
 }
 
 .threshold-overlay {
@@ -28,169 +27,170 @@
     inset: 0;
     background:
         linear-gradient(to bottom,
-            rgba(8, 8, 8, .82),
-            rgba(10, 10, 10, .38) 28%,
-            rgba(10, 10, 10, .28) 50%,
-            rgba(10, 10, 10, .6) 78%,
-            rgba(8, 8, 8, .88)),
+            rgba(8, 8, 8, .88),
+            rgba(8, 8, 8, .45) 30%,
+            rgba(8, 8, 8, .32) 55%,
+            rgba(8, 8, 8, .72) 82%,
+            rgba(8, 8, 8, .92)),
         radial-gradient(circle at center,
-            rgba(0, 0, 0, .05),
+            rgba(255, 255, 255, .02),
             rgba(0, 0, 0, .55));
     backdrop-filter: blur(2px);
+}
+
+.threshold-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at center,
+            rgba(255, 255, 255, .05),
+            transparent 62%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.threshold-page::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow:
+        inset 0 0 220px rgba(0, 0, 0, .8);
+    pointer-events: none;
+    z-index: 1;
 }
 
 .threshold-content {
     position: relative;
     z-index: 5;
-    width: min(980px, 100%);
+    width: min(760px, 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .threshold-label {
-    display: inline-block;
     font-family: "Inter", sans-serif;
     text-transform: uppercase;
-    letter-spacing: .45rem;
+    letter-spacing: .55rem;
     font-size: .72rem;
-    color: rgba(236, 222, 197, .72);
-    margin-bottom: 2rem;
+    color: rgba(222, 207, 180, .72);
+    margin-bottom: 2.8rem;
     opacity: 0;
-    animation: fadeSlide 1.3s ease forwards;
-    animation-delay: .4s;
+}
+
+.threshold-label::after {
+    content: "";
+    display: block;
+    width: 42px;
+    height: 1px;
+    background: rgba(211, 180, 122, .6);
+    margin: 1.2rem auto 0;
+    transform: scaleX(0);
+    transform-origin: center;
 }
 
 .threshold-content h1 {
     font-family: "Cormorant Garamond", serif;
-    font-size: clamp(3rem, 5vw, 5.3rem);
-    line-height: .96;
     font-weight: 300;
-    color: #fbf6ef;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    line-height: 1.08;
+    color: #fbf8f2;
     max-width: 760px;
-    margin-bottom: 5rem;
-    text-wrap: balance;
-    text-shadow: 0 12px 30px rgba(0, 0, 0, .45);
+    margin-bottom: 2.8rem;
+    letter-spacing: .01em;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, .45);
     opacity: 0;
-    animation: fadeSlide 1.5s ease forwards;
-    animation-delay: .8s;
 }
 
-.rooms {
+.threshold-quote {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    line-height: 1.12;
+    font-weight: 300;
+    color: #d9bf8f;
+    max-width: 650px;
+    margin-bottom: 4rem;
+    opacity: 0;
+}
+
+.threshold-divider {
+    width: 0;
+    height: 1px;
+    background: rgba(214, 183, 126, .45);
+    margin-bottom: 4rem;
+}
+
+.journey {
     display: flex;
     flex-direction: column;
-    gap: 1.35rem;
-    width: 100%;
-}
-
-.room {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    align-items: start;
-    column-gap: 2rem;
-    padding: 1.35rem 0;
-    text-decoration: none;
-    color: inherit;
-    border-top: 1px solid rgba(255, 255, 255, .08);
-    position: relative;
-    transition: .55s ease;
+    gap: .85rem;
+    margin-bottom: 4.5rem;
     opacity: 0;
-    transform: translateX(-40px);
 }
 
-.room:last-child {
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
-}
-
-.room-number {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 1.6rem;
-    color: rgba(212, 183, 132, .75);
-    font-weight: 500;
-    transition: .45s ease;
-}
-
-.room-text h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-weight: 300;
-    font-size: clamp(1.8rem, 2.2vw, 2.6rem);
-    color: #f7f1e6;
-    margin-bottom: .45rem;
-    letter-spacing: .02em;
-    transition: .45s ease;
-}
-
-.room-text p {
+.journey span {
     font-family: "Inter", sans-serif;
-    font-size: .95rem;
-    font-weight: 300;
-    line-height: 1.8;
-    color: rgba(230, 221, 207, .58);
-    max-width: 520px;
-    transition: .45s ease;
+    text-transform: uppercase;
+    letter-spacing: .32rem;
+    font-size: .76rem;
+    color: rgba(226, 214, 194, .65);
 }
 
-.room::before {
+.turn-page {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.6rem;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .28rem;
+    font-size: .78rem;
+    color: #f8f2e9;
+    border: 1px solid rgba(220, 194, 147, .35);
+    transition: .5s ease;
+    opacity: 0;
+    overflow: hidden;
+}
+
+.turn-page::before {
     content: "";
     position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%) scaleX(0);
+    inset: 0;
+    background: rgba(214, 184, 132, .08);
+    transform: scaleX(0);
     transform-origin: left;
-    width: 34px;
-    height: 1px;
-    background: #d7b57a;
-    transition: .45s ease;
+    transition: .5s ease;
 }
 
-.rooms:hover .room {
-    opacity: .3;
+.turn-page span {
+    position: relative;
+    z-index: 2;
 }
 
-.rooms:hover .room:hover {
-    opacity: 1;
-    transform: translateX(20px);
+.turn-page:hover {
+    border-color: rgba(231, 211, 175, .75);
+    letter-spacing: .34rem;
+    transform: translateY(-3px);
+    color: #fff;
 }
 
-.room:hover::before {
-    transform: translateY(-50%) scaleX(1);
+.turn-page:hover::before {
+    transform: scaleX(1);
 }
 
-.room:hover .room-number {
-    color: #ecd9b2;
-}
 
-.room:hover .room-text h2 {
-    color: #fffaf3;
-    letter-spacing: .06em;
-}
-
-.room:hover .room-text p {
-    color: rgba(247, 240, 228, .92);
-}
-
-.journey-note {
-    position: absolute;
-    bottom: 3.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: "Inter", sans-serif;
-    font-size: .78rem;
-    letter-spacing: .28rem;
-    text-transform: uppercase;
-    color: rgba(222, 210, 190, .38);
-    z-index: 5;
-    text-align: center;
-    opacity: 0;
-    animation: fadeSlide 1.4s ease forwards;
-    animation-delay: 2.7s;
-}
-
-@media (max-width:1024px) {
+@media (max-width:992px) {
 
     .threshold-page {
         padding: 6rem 7%;
     }
 
-    .threshold-content h1 {
-        margin-bottom: 4rem;
+    .threshold-content {
+        width: 100%;
     }
 
 }
@@ -199,50 +199,34 @@
 
     .threshold-page {
         padding: 5rem 2rem;
-        align-items: flex-start;
     }
 
     .threshold-background {
         transform: scale(1.2);
     }
 
-    .threshold-content {
-        margin-top: 2rem;
+    .threshold-content h1 {
+        font-size: 2.6rem;
+        margin-bottom: 2rem;
     }
 
-    .threshold-content h1 {
-        font-size: 2.7rem;
+    .threshold-quote {
+        font-size: 2rem;
         margin-bottom: 3rem;
     }
 
-    .room {
-        grid-template-columns: 52px 1fr;
-        column-gap: 1rem;
-        padding: 1.1rem 0;
+    .journey {
+        margin-bottom: 3rem;
     }
 
-    .room-number {
-        font-size: 1.2rem;
+    .journey span {
+        font-size: .68rem;
+        letter-spacing: .2rem;
     }
 
-    .room-text h2 {
-        font-size: 1.6rem;
-    }
-
-    .room-text p {
-        font-size: .85rem;
-        line-height: 1.7;
-    }
-
-    .journey-note {
-        position: relative;
-        left: auto;
-        bottom: auto;
-        transform: none;
-        display: block;
-        margin-top: 3rem;
-        letter-spacing: .18rem;
-        font-size: .7rem;
+    .turn-page {
+        width: 100%;
+        max-width: 300px;
     }
 
 }
@@ -253,140 +237,61 @@
         padding: 4rem 1.4rem;
     }
 
-    .threshold-content h1 {
-        font-size: 2.2rem;
-    }
-
     .threshold-label {
-        letter-spacing: .32rem;
+        letter-spacing: .35rem;
     }
 
-    .room {
-        grid-template-columns: 42px 1fr;
+    .threshold-content h1 {
+        font-size: 2.15rem;
     }
 
-    .room-text h2 {
-        font-size: 1.35rem;
+    .threshold-quote {
+        font-size: 1.6rem;
     }
 
-    .room-text p {
-        display: none;
+    .turn-page {
+        padding: .95rem 1.5rem;
+        font-size: .7rem;
+        letter-spacing: .2rem;
     }
 
 }
 
-.room:nth-child(1) {
-    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
-    animation-delay: 1.15s;
+.threshold-label {
+    animation: fadeUp 1.2s cubic-bezier(.19, 1, .22, 1) forwards;
+    animation-delay: .3s;
 }
 
-.room:nth-child(2) {
-    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
-    animation-delay: 1.3s;
+.threshold-label::after {
+    animation: lineGrow 1.2s ease forwards;
+    animation-delay: .8s;
 }
 
-.room:nth-child(3) {
-    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
-    animation-delay: 1.45s;
+.threshold-content h1 {
+    animation: fadeUp 1.4s cubic-bezier(.19, 1, .22, 1) forwards;
+    animation-delay: .8s;
 }
 
-.room:nth-child(4) {
-    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
-    animation-delay: 1.6s;
+.threshold-quote {
+    animation: fadeUp 1.5s cubic-bezier(.19, 1, .22, 1) forwards;
+    animation-delay: 1.4s;
 }
 
-.room:nth-child(5) {
-    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
-    animation-delay: 1.75s;
+.threshold-divider {
+    animation: dividerReveal 1.3s ease forwards;
+    animation-delay: 2.1s;
 }
 
-.room:nth-child(6) {
-    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
-    animation-delay: 1.9s;
+.journey {
+    animation: fadeUp 1.3s cubic-bezier(.19, 1, .22, 1) forwards;
+    animation-delay: 2.6s;
 }
 
-.room:nth-child(7) {
-    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
-    animation-delay: 2.05s;
+.turn-page {
+    animation: fadeUp 1.3s cubic-bezier(.19, 1, .22, 1) forwards;
+    animation-delay: 3.2s;
 }
 
-.room:nth-child(8) {
-    animation: roomReveal 1s cubic-bezier(.19, 1, .22, 1) forwards;
-    animation-delay: 2.2s;
-}
-
-.room::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg,
-            rgba(218, 183, 120, .08),
-            transparent 18%,
-            transparent 82%,
-            rgba(218, 183, 120, .04));
-    opacity: 0;
-    transition: opacity .6s ease;
-    pointer-events: none;
-}
-
-.room:hover::after {
-    opacity: 1;
-}
-
-.room:hover {
-    padding-left: 1.6rem;
-}
-
-.room:hover .room-number {
-    transform: translateX(.35rem);
-}
-
-.room:hover .room-text h2 {
-    transform: translateX(.45rem);
-}
-
-.room:hover .room-text p {
-    transform: translateX(.45rem);
-}
-
-.room:hover {
-    border-top-color: rgba(230, 203, 155, .28);
-}
-
-.room:last-child:hover {
-    border-bottom-color: rgba(230, 203, 155, .28);
-}
-
-.threshold-page::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle at 50% 35%,
-            rgba(255, 248, 235, .05),
-            transparent 55%);
-    opacity: .9;
-    pointer-events: none;
-    z-index: 2;
-}
-
-.threshold-page::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(to right,
-            rgba(0, 0, 0, .45),
-            transparent 20%,
-            transparent 80%,
-            rgba(0, 0, 0, .45));
-    pointer-events: none;
-    z-index: 2;
-}
-
-.threshold-content {
-    animation: pageFloat 2.8s ease-out forwards;
-}
 
 .threshold-background {
     will-change: transform, filter;
@@ -395,221 +300,141 @@
 .threshold-page:hover .threshold-background {
     transform: scale(1.16);
     filter:
-        brightness(.34) contrast(1.15) saturate(.95);
+        brightness(.32) contrast(1.12) saturate(.92);
     transition:
-        transform 8s ease,
+        transform 18s linear,
         filter 8s ease;
 }
 
-.threshold-content h1::after {
-    content: "";
-    display: block;
-    width: 70px;
-    height: 1px;
-    margin-top: 2rem;
-    background: rgba(219, 186, 135, .55);
-    transform: scaleX(0);
-    transform-origin: left;
-    animation: lineReveal 1.2s ease forwards;
-    animation-delay: 1.3s;
+.threshold-content {
+    animation: contentFloat 2.5s ease-out forwards;
 }
 
-.threshold-label {
-    position: relative;
-    padding-left: 1.4rem;
-}
-
-.threshold-label::before {
+.turn-page::after {
     content: "";
     position: absolute;
-    left: 0;
-    top: 50%;
-    width: .8rem;
-    height: 1px;
-    background: #cda86b;
-    transform: translateY(-50%) scaleX(0);
-    transform-origin: left;
-    animation: lineReveal .9s ease forwards;
-    animation-delay: .5s;
+    inset: 0;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, .08),
+            transparent);
+    transform: translateX(-140%);
 }
 
-.rooms {
-    position: relative;
+.turn-page:hover::after {
+    transform: translateX(140%);
+    transition: 1.1s ease;
 }
 
-.rooms::before {
-    content: "";
-    position: absolute;
-    left: 38px;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom,
-            rgba(255, 255, 255, .06),
-            rgba(255, 255, 255, .02));
+.turn-page:hover {
+    box-shadow:
+        0 0 40px rgba(214, 184, 132, .12);
 }
 
-.room-text {
-    transition: .5s ease;
+.threshold-quote {
+    text-shadow:
+        0 0 40px rgba(214, 184, 132, .08);
 }
 
-.rooms:hover .room-text {
-    filter: blur(.4px);
+.threshold-content h1,
+.threshold-quote,
+.turn-page {
+    will-change: transform, opacity;
 }
 
-.rooms:hover .room:hover .room-text {
-    filter: none;
-}
-
-.rooms:hover .room-number {
-    opacity: .45;
-}
-
-.rooms:hover .room:hover .room-number {
-    opacity: 1;
-}
-
-.room:active {
-    transform: translateX(24px) scale(.995);
-}
-
-@keyframes roomReveal {
+@keyframes fadeUp {
 
     from {
-
         opacity: 0;
         transform:
-            translateX(-50px);
-
-        filter:
-            blur(10px);
-
+            translateY(35px);
+        filter: blur(10px);
     }
 
     to {
-
         opacity: 1;
         transform:
-            translateX(0);
-
-        filter:
-            blur(0);
-
+            translateY(0);
+        filter: blur(0);
     }
 
 }
 
-@keyframes fadeSlide {
+@keyframes dividerReveal {
 
     from {
-
+        width: 0;
         opacity: 0;
-
-        transform:
-            translateY(28px);
-
-        filter:
-            blur(10px);
-
     }
 
     to {
-
+        width: 120px;
         opacity: 1;
-
-        transform:
-            translateY(0);
-
-        filter:
-            blur(0);
-
     }
 
 }
 
-@keyframes backgroundReveal {
+@keyframes lineGrow {
 
     from {
-
-        transform:
-            scale(1.25);
-
-        filter:
-            brightness(.12) contrast(1.35) blur(8px);
-
+        transform: scaleX(0);
     }
 
     to {
-
-        transform:
-            scale(1.12);
-
-        filter:
-            brightness(.3) contrast(1.12) saturate(.9) blur(0);
-
+        transform: scaleX(1);
     }
 
 }
 
-@keyframes pageFloat {
+@keyframes bgReveal {
 
     from {
-
-        transform:
-            translateY(18px);
-
+        transform: scale(1.24);
+        filter:
+            brightness(.08) blur(10px) contrast(1.3);
     }
 
     to {
-
-        transform:
-            translateY(0);
-
+        transform: scale(1.12);
+        filter:
+            brightness(.28) contrast(1.08) saturate(.88) blur(0);
     }
 
 }
 
-@keyframes lineReveal {
+@keyframes contentFloat {
 
     from {
-
-        transform:
-            scaleX(0);
-
+        transform: translateY(16px);
     }
 
     to {
+        transform: translateY(0);
+    }
 
-        transform:
-            scaleX(1);
+}
 
+@media (min-width:769px) {
+
+    .threshold-content {
+        transition: transform .8s ease;
+    }
+
+    .threshold-page:hover .threshold-content {
+        transform: translateY(-4px);
     }
 
 }
 
 @media (max-width:768px) {
 
-    .rooms::before {
-        left: 24px;
+    .threshold-page:hover .threshold-background {
+        transform: scale(1.2);
     }
 
-    .room:hover {
-        padding-left: .6rem;
+    .turn-page:hover {
         transform: none;
-    }
-
-    .room:hover .room-text h2,
-    .room:hover .room-text p,
-    .room:hover .room-number {
-        transform: none;
-    }
-
-    .rooms:hover .room {
-        opacity: 1;
-    }
-
-    .rooms:hover .room-text {
-        filter: none;
+        letter-spacing: .28rem;
     }
 
 }
@@ -619,10 +444,8 @@
     *,
     *::before,
     *::after {
-
         animation: none !important;
         transition: none !important;
-
     }
 
 }

@@ -1,110 +1,56 @@
 import { Link } from "react-router-dom";
-import threshold from "../../assets/images/threshold.jpg.jpeg";
+import background from "../../assets/images/threshold.jpg.jpeg";
 import "./Threshold.css";
-
-const rooms = [
-    {
-        number: "01",
-        title: "Gallery of Forgotten Paintings",
-        path: "/lost-era",
-        note: "Where forgotten masterpieces continue to breathe."
-    },
-    {
-        number: "02",
-        title: "Hall of Silent Architecture",
-        path: "/art-of-craft",
-        note: "Spaces built to outlive their creators."
-    },
-    {
-        number: "03",
-        title: "Cinema of Fading Light",
-        path: "/minimal-age",
-        note: "Films remembered long after their final frame."
-    },
-    {
-        number: "04",
-        title: "Library of Lost Words",
-        path: "/archive",
-        note: "Books that continue speaking through memory."
-    },
-    {
-        number: "05",
-        title: "The Dressing Room",
-        path: "/fashion-identity",
-        note: "Where identity is stitched, worn and forgotten."
-    },
-    {
-        number: "06",
-        title: "Cabinet of Curiosities",
-        path: "/curator",
-        note: "Objects too strange to belong anywhere else."
-    },
-    {
-        number: "07",
-        title: "Chamber of Photographs",
-        path: "/closing",
-        note: "Moments rescued from disappearing forever."
-    },
-    {
-        number: "08",
-        title: "Room of Echoes",
-        path: "/closing",
-        note: "Music that survives only through memory."
-    }
-];
 
 function Threshold() {
     return (
         <main className="threshold-page">
 
             <img
-                src={threshold}
+                src={background}
                 alt=""
                 className="threshold-background"
             />
 
-            <div className="threshold-overlay" />
+            <div className="threshold-overlay"></div>
 
-            <div className="threshold-content">
+            <section className="threshold-content">
 
                 <span className="threshold-label">
                     Threshold
                 </span>
 
                 <h1>
-                    Every room preserves
-                    <br />
-                    a different fragment
-                    <br />
-                    of beauty.
+                    Every museum preserves objects
                 </h1>
 
-                <div className="rooms">
+                <p className="threshold-quote">
+                    This one preserves
+                    <br />
+                    what time forgets
+                </p>
 
-                    {rooms.map((room) => (
-                        <Link
-                            key={room.number}
-                            to={room.path}
-                            className="room"
-                        >
-                            <span className="room-number">
-                                {room.number}
-                            </span>
+                <div className="threshold-divider"></div>
 
-                            <div className="room-text">
-                                <h2>{room.title}</h2>
-                                <p>{room.note}</p>
-                            </div>
-                        </Link>
-                    ))}
+                <div className="journey">
+
+                    <span>Eight rooms</span>
+
+                    <span>Eight fragments</span>
+
+                    <span>One journey</span>
 
                 </div>
 
-            </div>
+                <Link
+                    to="/lost-era"
+                    className="turn-page"
+                >
+                    <span>Turn the page →</span>
+                </Link>
 
-            <span className="journey-note">
-                There is no correct path through the museum.
-            </span>
+            </section>
+
 
         </main>
     );
