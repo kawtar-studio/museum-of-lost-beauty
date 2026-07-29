@@ -27,8 +27,7 @@ function Home() {
 
 
                 <p className="intro-text">
-                    Between what was once cherished and what is yet to be imagined lies a collection of forgotten beauty, fragments of the past that remain as art evolves and beauty takes new forms, waiting to be rediscovered, reinterpreted, and given another existence.
-                </p>
+                    A study of beauty beyond its era, where forgotten forms, fading memories, and lost expressions of art find new life in the digital age.</p>
 
             </section>
 
